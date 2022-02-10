@@ -1,20 +1,20 @@
-## Genshin jorney API
+# Genshin jorney API
 
-### Введение
+## Введение
 
 API работает на cockpit CMS, поэтому для начала ознакомитесь с его [документацией](https://getcockpit.com/documentation).
 
-### Collections
+## Collections
 
 + charactersv2
 + dict
 + gacha
 
-### Singletons
+## Singletons
 
 + about
 
-### Примеры
+## Примеры
 
 Выведет все поля, сортировка по id(по умолчанию):
 ```
@@ -28,12 +28,12 @@ https://sushicat.pp.ua/api/genshin/api/collections/get/charactersv2?sort[rarity]
 
 Если хотите посылать пост запросы читайте [документацию](https://getcockpit.com/documentation).
 
-### Авторизация (без любого доступа)
+## Авторизация (без любого доступа)
 
 login: test
 password: test123
 
-### Ошибка 403
+## Ошибка 403
 
 Если вы столкнулись с данной проблемой, то установите в header запроса:
 ```

@@ -2,14 +2,14 @@
 
 ## Introduction
 
-The API is based on the cockpit CMS, so you can read the [documentation] (https://getcockpit.com/documentation) first.
+The API is based on the cockpit CMS, so you may read the [documentation](https://getcockpit.com/documentation) first.
 
 ## Collections
 
 + charactersv2
 + dict
 + gacha
-+ gachaWeapons
++ gachaWeapons `beta`
 
 ## Singletons
 

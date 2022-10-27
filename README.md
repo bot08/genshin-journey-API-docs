@@ -1,14 +1,15 @@
-# Genshin jorney API
+# Genshin journey API
 
-## Введение
+## Introduction
 
-API работает на cockpit CMS, поэтому для начала ознакомитесь с его [документацией](https://getcockpit.com/documentation).
+The API is based on the cockpit CMS, so you can read the [documentation] (https://getcockpit.com/documentation) first.
 
 ## Collections
 
 + charactersv2
 + dict
 + gacha
++ gachaWeapons
 
 ## Singletons
 
@@ -16,23 +17,23 @@ API работает на cockpit CMS, поэтому для начала озн
 
 ## Token
 
-Токен: a4191046104f8f3674f788e804c2d0\
-Его можно отправлять в запросе (см. примеры)
+Token: a4191046104f8f3674f788e804c2d0\
+It can be sent in a request (see examples)
 
-Также его можно отсылать в headers:
+It can also be sent in headers:
 ```
 Cockpit-Token: a4191046104f8f3674f788e804c2d0
 ```
 
-## Примеры
+## Examples
 
-Самый простой запрос. Выведет все поля, сортировка по id(по умолчанию):
+The simplest request. Displays all fields, sorted by id (default):
 
 ```
 https://sushicat.pp.ua/api/genshin/api/collections/get/charactersv2?token=a4191046104f8f3674f788e804c2d0
 ```
 
-Следующие примеры выведут только 4 поля, редкие персонажи впереди, начинает с 1 элемента и отобразит только 36 штук(полезно для страниц):
+The following examples will output only 4 fields, rare characters in front, start with 1 item and display only 36 pieces (useful for pages):
 
 #### get
 
@@ -64,19 +65,9 @@ body (json application/json):
 }
 ```
 
+See the [cockpit documentation](https://getcockpit.com/documentation) for more information.
 
-Больше информации читайте в [документации cockpit](https://getcockpit.com/documentation).
-
-## Авторизация (без любого доступа)
+## Authorization (without any access)
 
 login: test\
 password: test123
-
-## Ошибка 403
-
-Если вы столкнулись с данной проблемой, то установите в header запроса:
-```
-User-Agent: "любое устройство"
-```
-
-Также она может быть связана с неправильным токеном (см. token)

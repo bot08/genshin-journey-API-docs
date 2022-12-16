@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The API is based on the cockpit CMS, so you may read the [documentation](https://getcockpit.com/documentation) first.
+The API is based on the cockpit CMS (v0.12.x), so you may read the [documentation](https://getcockpit.com/documentation) first.
 
 ## Collections
 

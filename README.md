@@ -72,6 +72,9 @@ See the [cockpit documentation](https://getcockpit.com/documentation) for more i
 login: test\
 password: test123
 
-## Preview
+## Preview features
 
-[BASE64 image](https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg) (todo: reduce photo size)
+#### BASE64 image <sub>(todo: reduce photo size)</sub>
+```
+https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg
+```

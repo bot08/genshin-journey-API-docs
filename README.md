@@ -74,4 +74,4 @@ password: test123
 
 ## Preview
 
-[BASE64 image](https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg)
+[BASE64 image](https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg) (todo: reduce photo size)

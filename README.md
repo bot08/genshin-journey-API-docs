@@ -2,14 +2,14 @@
 
 ## Introduction
 
-The API is based on the cockpit CMS, so you may read the [documentation](https://getcockpit.com/documentation) first.
+The API is based on the cockpit CMS (v0.12.x), so you may read the [documentation](https://getcockpit.com/documentation) first.
 
 ## Collections
 
 + charactersv2
 + dict
 + gacha
-+ gachaWeapons <sub>(preview)</sub>
++ gachaWeapons
 
 ## Singletons
 
@@ -71,3 +71,10 @@ See the [cockpit documentation](https://getcockpit.com/documentation) for more i
 
 login: test\
 password: test123
+
+## Preview features
+
+#### BASE64 image <sub>(todo: reduce photo size)</sub>
+```
+https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg
+```

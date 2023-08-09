@@ -17,7 +17,7 @@ The API is based on the cockpit CMS (v0.12.x), so you may read the [documentatio
 
 ## Token
 
-Token: `a4191046104f8f3674f788e804c2d0`\
+Token: `a4191046104f8f3674f788e804c2d0`
 It can be sent in a request (see examples)
 
 It can also be sent in headers:
@@ -94,6 +94,15 @@ https://sushicat.pp.ua/api/genshin/additional/weapons.php?id=the_black_sword
 
 login: test\
 password: test123
+
+## Fallback
+
+If the user cannot contact the main server, a proxy server can be used. <sub>(not recommended in other cases)</sub>
+
+URL:
+```
+https://api.genshin-journey.site/
+```
 
 ## Preview features
 

@@ -67,6 +67,29 @@ body (json application/json):
 
 See the [cockpit documentation](https://getcockpit.com/documentation) for more information.
 
+## Weapons script
+At the moment the weapons do not exist in the cockpit CMS. They are obtained and parsed from another site using a simple script.\
+
+So script can take type and id parameters.
+
+#### Type
+
+It must get type of weapon + sorting.
+
+Request looks like this:
+```
+https://sushicat.pp.ua/api/genshin/additional/weapons.php?type=sword_normal
+```
+
+#### Id
+
+Just specify the desired Id here.
+
+Request looks like this:
+```
+https://sushicat.pp.ua/api/genshin/additional/weapons.php?id=the_black_sword
+```
+
 ## Authorization (without any access)
 
 login: test\

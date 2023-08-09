@@ -68,7 +68,7 @@ body (json application/json):
 See the [cockpit documentation](https://getcockpit.com/documentation) for more information.
 
 ## Weapons script
-At the moment the weapons do not exist in the cockpit CMS. They are obtained and parsed from another site using a simple script.\
+At the moment the weapons do not exist in the cockpit CMS. They are obtained and parsed from another site using a simple script.
 
 So script can take type and id parameters.
 

@@ -17,7 +17,7 @@ The API is based on the cockpit CMS (v0.12.x), so you may read the [documentatio
 
 ## Token
 
-Token: `a4191046104f8f3674f788e804c2d0`
+Token: `a4191046104f8f3674f788e804c2d0`\
 It can be sent in a request (see examples)
 
 It can also be sent in headers:

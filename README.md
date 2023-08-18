@@ -74,7 +74,7 @@ So script can take type and id parameters.
 
 #### Type
 
-It must get type of weapon + sorting.
+It must get type of weapon + sorting (normal, reversed, sorted).
 
 Request looks like this:
 ```
@@ -99,9 +99,13 @@ password: test123
 
 If the user cannot contact the main server, a proxy server can be used. <sub>(not recommended in other cases)</sub>
 
-URL:
+Example to get data:
 ```
-https://api.genshin-journey.site/
+https://api.genshin-journey.site/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan&token=a4191046104f8f3674f788e804c2d0
+```
+Example to get image:
+```
+https://api.genshin-journey.site/.netlify/functions/img/genshin/storage/uploads/2023/05/11/Faruzan_Portrait_2_uid_645cad680f9f5.png
 ```
 
 ## Preview features

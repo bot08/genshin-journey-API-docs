@@ -67,10 +67,46 @@ body (json application/json):
 
 See the [cockpit documentation](https://getcockpit.com/documentation) for more information.
 
+## Weapons script
+At the moment the weapons do not exist in the cockpit CMS. They are obtained and parsed from another site using a simple script.
+
+So script can take type and id parameters.
+
+#### Type
+
+It must get type of weapon + sorting (normal, reversed, sorted).
+
+Request looks like this:
+```
+https://sushicat.pp.ua/api/genshin/additional/weapons.php?type=sword_normal
+```
+
+#### Id
+
+Just specify the desired Id here.
+
+Request looks like this:
+```
+https://sushicat.pp.ua/api/genshin/additional/weapons.php?id=the_black_sword
+```
+
 ## Authorization (without any access)
 
 login: test\
 password: test123
+
+## Fallback
+
+If the user cannot contact the main server, a proxy server can be used. <sub>(not recommended in other cases)</sub>
+
+Example to get data:
+```
+https://api.genshin-journey.site/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan&token=a4191046104f8f3674f788e804c2d0
+```
+Example to get image:
+```
+https://api.genshin-journey.site/.netlify/functions/img/genshin/storage/uploads/2023/05/11/Faruzan_Portrait_2_uid_645cad680f9f5.png
+```
 
 ## Preview features
 

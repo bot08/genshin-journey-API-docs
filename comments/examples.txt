@@ -1,5 +1,0 @@
-https://sushicat.pp.ua/api/genshin/additional/comments/delete.php?secret=???&id=1
-
-https://sushicat.pp.ua/api/genshin/additional/comments/get.php?branch=test
-
-https://sushicat.pp.ua/api/genshin/additional/comments/add.php?username=Test321&avatar_id=2&comment=test12345&branch=test

@@ -110,7 +110,7 @@ https://api.genshin-journey.site/.netlify/functions/img/genshin/storage/uploads/
 
 ## Preview features
 
-#### Comments
+#### Comments <sub>todo: better backend validation</sub>
 
 Example to get comments for branch 'diona':
 ```

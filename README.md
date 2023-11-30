@@ -110,6 +110,15 @@ https://api.genshin-journey.site/.netlify/functions/img/genshin/storage/uploads/
 
 ## Preview features
 
+#### Comments <sub>(todo: better backend validation)</sub>
+
+Example to get comments for branch 'diona':
+```
+https://sushicat.pp.ua/api/genshin/additional/comments/get.php?branch=diona
+```
+
+There are also methods available for posting comments and deleting them. After testing, all test comments will be removed.
+
 #### BASE64 image <sub>(todo: reduce photo size)</sub>
 ```
 https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg

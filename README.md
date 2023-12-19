@@ -68,6 +68,7 @@ body (json application/json):
 See the [cockpit documentation](https://getcockpit.com/documentation) for more information.
 
 ## Weapons script
+
 At the moment the weapons do not exist in the cockpit CMS. They are obtained and parsed from another site using a simple script.
 
 So script can take type and id parameters.
@@ -90,6 +91,28 @@ Request looks like this:
 https://sushicat.pp.ua/api/genshin/additional/weapons.php?id=the_black_sword
 ```
 
+## Comments
+
+Example for retrieving commentss for branch 'diona':
+```
+https://sushicat.pp.ua/api/genshin/additional/comments/get.php?branch=diona
+```
+
+Example to add comment for branch 'diona':
+```
+https://sushicat.pp.ua/api/genshin/additional/comments/add.php?username=User123&avatar_id=1&comment=test123&branch=diona&code_use=CODE1
+```
+
+Example for deleting a comment by ID:
+```
+https://sushicat.pp.ua/api/genshin/additional/comments/delete.php?secret=(admin_code)&id=1
+```
+
+Example to get available uses of promocode:
+```
+https://sushicat.pp.ua/api/genshin/additional/comments/promo_validation.php?code_view=CODE1
+```
+
 ## Authorization (without any access)
 
 login: test\
@@ -109,15 +132,6 @@ https://api.genshin-journey.site/.netlify/functions/img/genshin/storage/uploads/
 ```
 
 ## Preview features
-
-#### Comments <sub>(todo: better backend validation)</sub>
-
-Example to get comments for branch 'diona':
-```
-https://sushicat.pp.ua/api/genshin/additional/comments/get.php?branch=diona
-```
-
-There are also methods available for posting comments and deleting them. After testing, all test comments will be removed.
 
 #### BASE64 image <sub>(todo: reduce photo size)</sub>
 ```

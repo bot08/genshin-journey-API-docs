@@ -10,6 +10,7 @@ The API is based on the cockpit CMS (v0.12.x), so you may read the [documentatio
 + dict
 + gacha
 + gachaWeapons
++ chronicle
 
 ## Singletons
 

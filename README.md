@@ -4,6 +4,18 @@
 
 The API is based on the cockpit CMS (v0.12.x), so you may read the [documentation](https://getcockpit.com/documentation) first.
 
+## RU and UA
+
+There are 2 different API branches: RU and UA. They have a 90% identical structure, but different base URLs.
+
+```
+https://sushicat.pp.ua/api/genshin/
+```
+```
+https://sushicat.pp.ua/api/genshin-ua/
+```
+
+
 ## Collections
 
 + charactersv2

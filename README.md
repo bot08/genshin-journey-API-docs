@@ -80,7 +80,7 @@ It must get type of weapon + sorting (normal, reversed, sorted).
 
 Request looks like this:
 ```
-https://sushicat.pp.ua/api/genshin/additional/weapons.php?type=sword_normal
+https://sushicat.pp.ua/api/genshin/additional/weapons/get.php?type=sword_normal
 ```
 
 #### Id
@@ -89,8 +89,10 @@ Just specify the desired Id here.
 
 Request looks like this:
 ```
-https://sushicat.pp.ua/api/genshin/additional/weapons.php?id=the_black_sword
+https://sushicat.pp.ua/api/genshin/additional/weapons/get.php?id=the_black_sword
 ```
+
+##### It's fully identical to deprecated method.
 
 ## Comments
 

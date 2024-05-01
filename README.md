@@ -92,7 +92,7 @@ Request looks like this:
 https://sushicat.pp.ua/api/genshin/additional/weapons/get.php?id=the_black_sword
 ```
 
-##### It's fully identical to deprecated method.
+##### If you employ a deprecated method, it will be automatically redirected to the updated version.
 
 ## Comments
 

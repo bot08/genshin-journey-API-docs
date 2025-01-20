@@ -94,7 +94,7 @@ https://sushicat.pp.ua/api/genshin/additional/weapons/get.php?id=the_black_sword
 
 ##### If you employ a deprecated method, it will be automatically redirected to the updated version.
 
-## Artefact script
+## Artefacts script
 
 The script for artefacts is identical to the one for weapons. It uses the same parameters (type and id) and operates in the same way. The only difference is the endpoint.
 

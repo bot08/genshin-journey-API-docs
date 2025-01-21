@@ -94,6 +94,18 @@ https://sushicat.pp.ua/api/genshin/additional/weapons/get.php?id=the_black_sword
 
 ##### If you employ a deprecated method, it will be automatically redirected to the updated version.
 
+## Artefacts script
+
+The script for artefacts is identical to the one for weapons. It uses the same parameters (type and id) and operates in the same way. The only difference is the endpoint.
+
+```
+https://sushicat.pp.ua/api/genshin/additional/artefacts/get.php?type=normal
+```
+
+```
+https://sushicat.pp.ua/api/genshin/additional/artefacts/get.php?id=noblesse_oblige
+```
+
 ## Comments
 
 Example for retrieving commentss for branch 'diona':

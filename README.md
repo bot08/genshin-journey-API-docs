@@ -1,56 +1,79 @@
-# Genshin journey API
+# Genshin Journey API
 
-## Introduction
+A comprehensive API for accessing Genshin Impact game data, providing information about characters, weapons, artifacts, and more in both Russian and Ukrainian languages.
 
-The API is based on the cockpit CMS (v0.12.x), so you may read the [documentation](https://getcockpit.com/documentation) first.
+## Base URLs
 
-## Collections
+The API is available through multiple endpoints to ensure reliability and language support:
 
-+ charactersv2
-+ dict
-+ gacha
-+ gachaWeapons
-+ chronicle
+**Russian Data:**
+* Primary: `https://sushicat.pp.ua/api/genshin`
+* Fallback: `https://api.genshin-journey.space/.netlify/functions/index`
 
-## Singletons
+**Ukrainian Data:**
+* Primary: `https://sushicat.pp.ua/api/genshin-ua`
+* Fallback: `https://api.genshin-journey.space/.netlify/functions/index-ua`
 
-+ aboutv2
+*For simplicity in the examples below, `[BASE_URL]` will generally refer to one of the primary base URLs (e.g., `https://sushicat.pp.ua/api/genshin`). Choose the appropriate one for your needs.*
 
-## Token
+## Architecture Overview
 
-Token: `a4191046104f8f3674f788e804c2d0`\
-It can be sent in a request (see examples)
+The backend architecture consists of multiple components:
 
-It can also be sent in headers:
+1. **Cockpit CMS (v0.12.x)** - Main database containing most of the information
+2. **Additional Scripts** - Custom endpoints for weapons, artifacts, and comments
+3. **Proxy API** - Fallback server at `api.genshin-journey.space` with additional undocumented scripts
+
+## Authentication
+
+Most endpoints require an **API Token**: `a4191046104f8f3674f788e804c2d0`
+
+The token can be used in two ways:
+
+### URL Parameter
+```
+?token=a4191046104f8f3674f788e804c2d0
+```
+
+### Header
 ```
 Cockpit-Token: a4191046104f8f3674f788e804c2d0
 ```
 
-## Examples
+## Data Collections
 
-The simplest request. Displays all fields, sorted by id (default):
+The API provides access to the following Cockpit CMS collections:
 
-```
-https://sushicat.pp.ua/api/genshin/api/collections/get/charactersv2?token=a4191046104f8f3674f788e804c2d0
+- **charactersv2**
+- **dict**
+- **gacha**
+- **gachaWeapons**
+- **chronicle**
+
+## Singletons
+
+- **aboutv2**
+
+## API Endpoints
+
+### Characters Collection
+
+#### Basic Request (All Fields)
+```http
+GET [BASE_URL]/api/collections/get/charactersv2?token=a4191046104f8f3674f788e804c2d0
 ```
 
-The following examples will output only 4 fields, rare characters in front, start with 1 item and display only 36 pieces (useful for pages):
-
-#### get
-
-url:
-```
-https://sushicat.pp.ua/api/genshin/api/collections/get/charactersv2?sort[rarity]=-1&skip=0&limit=36&fields[name]=1&fields[nameeng]=1&fields[rarity]=1&fields[ico]=1&token=a4191046104f8f3674f788e804c2d0
+#### Advanced Request with Filtering
+**GET Request:**
+```http
+GET [BASE_URL]/api/collections/get/charactersv2?sort[rarity]=-1&skip=0&limit=36&fields[name]=1&fields[nameeng]=1&fields[rarity]=1&fields[ico]=1&token=a4191046104f8f3674f788e804c2d0
 ```
 
-#### post
+**POST Request:**
+```http
+POST [BASE_URL]/api/collections/get/charactersv2?token=a4191046104f8f3674f788e804c2d0
+Content-Type: application/json
 
-url:
-```
-https://sushicat.pp.ua/api/genshin/api/collections/get/charactersv2?token=a4191046104f8f3674f788e804c2d0
-```
-body (json application/json):
-```
 {
   "fields": {
     "name": 1,
@@ -66,89 +89,100 @@ body (json application/json):
 }
 ```
 
-See the [cockpit documentation](https://getcockpit.com/documentation) for more information.
+### Weapons Script
 
-## Weapons script
+Weapons data is obtained through custom scripts as they are not stored in the Cockpit CMS.
 
-At the moment the weapons do not exist in the cockpit CMS. They are obtained and parsed from another site using a simple script.
-
-So script can take type and id parameters.
-
-#### Type
-
-It must get type of weapon + sorting (normal, reversed, sorted).
-
-Request looks like this:
-```
-https://sushicat.pp.ua/api/genshin/additional/weapons/get.php?type=sword_normal
+#### By Type
+```http
+GET [BASE_URL]/additional/weapons/get.php?type=sword_normal
 ```
 
-#### Id
+**Available types**: `{weapon_type}_{sorting}`
+- Weapon types: `sword`, `bow`, `catalyst`, `claymore`, `polearm`
+- Sorting options: `normal`, `reversed`, `sorted`
 
-Just specify the desired Id here.
-
-Request looks like this:
-```
-https://sushicat.pp.ua/api/genshin/additional/weapons/get.php?id=the_black_sword
-```
-
-##### If you employ a deprecated method, it will be automatically redirected to the updated version.
-
-## Artefacts script
-
-The script for artefacts is identical to the one for weapons. It uses the same parameters (type and id) and operates in the same way. The only difference is the endpoint.
-
-```
-https://sushicat.pp.ua/api/genshin/additional/artefacts/get.php?type=normal
+#### By ID
+```http
+GET [BASE_URL]/additional/weapons/get.php?id=the_black_sword
 ```
 
-```
-https://sushicat.pp.ua/api/genshin/additional/artefacts/get.php?id=noblesse_oblige
+### Artifacts Script
+
+The artifacts endpoint works identically to the weapons script but uses a different endpoint.
+
+#### By Type
+```http
+GET [BASE_URL]/additional/artefacts/get.php?type=normal
 ```
 
-## Comments
-
-Example for retrieving commentss for branch 'diona':
-```
-https://sushicat.pp.ua/api/genshin/additional/comments/get.php?branch=diona
+#### By ID
+```http
+GET [BASE_URL]/additional/artefacts/get.php?id=noblesse_oblige
 ```
 
-Example to add comment for branch 'diona':
-```
-https://sushicat.pp.ua/api/genshin/additional/comments/add.php?username=User123&avatar_id=1&comment=test123&branch=diona&code_use=CODE1
+### Comments System
+
+#### Retrieve Comments
+```http
+GET [BASE_URL]/additional/comments/get.php?branch=diona
 ```
 
-Example for deleting a comment by ID:
-```
-https://sushicat.pp.ua/api/genshin/additional/comments/delete.php?secret=(admin_code)&id=1
-```
-
-Example to get available uses of promocode:
-```
-https://sushicat.pp.ua/api/genshin/additional/comments/promo_validation.php?code_view=CODE1
+#### Add Comment
+```http
+POST [BASE_URL]/additional/comments/add.php?username=User123&avatar_id=1&comment=test123&branch=diona&code_use=CODE1
 ```
 
-## Authorization (without any access)
-
-login: test\
-password: test123
-
-## Fallback
-
-If the user cannot contact the main server, a proxy server can be used. <sub>(not recommended in other cases)</sub>
-
-Example to get data:
-```
-https://api.genshin-journey.site/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan&token=a4191046104f8f3674f788e804c2d0
-```
-Example to get image:
-```
-https://api.genshin-journey.site/.netlify/functions/img/genshin/storage/uploads/2023/05/11/Faruzan_Portrait_2_uid_645cad680f9f5.png
+#### Delete Comment (Admin)
+```http
+DELETE [BASE_URL]/additional/comments/delete.php?secret=(admin_code)&id=1
 ```
 
-## Preview features
+#### Validate Promocode
+```http
+GET [BASE_URL]/additional/comments/promo_validation.php?code_view=CODE1
+```
 
-#### BASE64 image <sub>(todo: reduce photo size)</sub>
+## Test Authorization
+
+For testing purposes, you can use:
+- **Login**: `test`
+- **Password**: `test123`
+
+> **Note**: This provides limited access and is intended for testing only.
+
+## Fallback/Proxy Server
+
+If the main server is unavailable, use the proxy server (not recommended for regular use):
+
+### Data Retrieval
+```http
+GET https://api.genshin-journey.space/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan&token=a4191046104f8f3674f788e804c2d0
 ```
-https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg
+
+### Image Retrieval
+Images can be retrieved for both Russian and Ukrainian versions:
+
+```http
+GET https://api.genshin-journey.space/.netlify/functions/img/genshin/storage/uploads/2023/05/11/Faruzan_Portrait_2_uid_645cad680f9f5.png
 ```
+
+## Preview Features
+
+### BASE64 Image Conversion
+Convert images to BASE64 format (optimization in progress):
+
+```http
+GET https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/12/05/itto-3-3_uid_638e1f8dd1901.jpg
+```
+
+## Additional Documentation
+
+For more detailed information about query parameters, filtering, and advanced usage, refer to the [Cockpit CMS documentation](https://getcockpit.com/documentation) as the API is built on Cockpit CMS v0.12.x.
+
+## Important Notes
+
+1. The backend architecture is complex with multiple data sources
+2. Some scripts and endpoints are undocumented (like AI service)
+3. The Cockpit CMS is legacy but contains the majority of the data
+4. Always use the primary URLs when possible; fallback URLs are for emergency use only

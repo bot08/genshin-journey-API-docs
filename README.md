@@ -54,7 +54,7 @@ The API provides access to the following Cockpit CMS collections:
 
 - **aboutv2**
 
-### Get Characters Collection (example)
+### Get *charactersv2* (example)
 
 #### Basic Request (All Fields)
 ```http

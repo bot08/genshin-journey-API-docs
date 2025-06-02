@@ -1,6 +1,6 @@
 # Genshin Journey API
 
-A comprehensive API for accessing Genshin Impact game data, providing information about characters, weapons, artifacts, and more in both Russian and Ukrainian languages.
+API for accessing data from [genshin-journey.space](https://genshin-journey.space).
 
 ## Base URLs
 
@@ -54,7 +54,7 @@ The API provides access to the following Cockpit CMS collections:
 
 - **aboutv2**
 
-### Characters Collection (example)
+### Get Characters Collection (example)
 
 #### Basic Request (All Fields)
 ```http

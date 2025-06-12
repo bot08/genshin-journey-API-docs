@@ -153,7 +153,6 @@ For testing purposes, you can use:
 
 If the main server is unavailable, use the proxy server (not recommended for regular use):
 
-### Fallback
 ```http
 GET https://api.genshin-journey.space/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan&token=a4191046104f8f3674f788e804c2d0
 ```

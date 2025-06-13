@@ -128,12 +128,12 @@ GET [BASE_URL]/additional/comments/get.php?branch=diona
 
 #### Add Comment
 ```http
-POST [BASE_URL]/additional/comments/add.php?username=User123&avatar_id=1&comment=test123&branch=diona&code_use=CODE1
+GET [BASE_URL]/additional/comments/add.php?username=User123&avatar_id=1&comment=test123&branch=diona&code_use=CODE1
 ```
 
 #### Delete Comment (Admin)
 ```http
-DELETE [BASE_URL]/additional/comments/delete.php?secret=(admin_code)&id=1
+GET [BASE_URL]/additional/comments/delete.php?secret=(admin_code)&id=1
 ```
 
 #### Validate Promocode
@@ -153,12 +153,10 @@ For testing purposes, you can use:
 
 If the main server is unavailable, use the proxy server (not recommended for regular use):
 
-### Data Retrieval
 ```http
 GET https://api.genshin-journey.space/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan&token=a4191046104f8f3674f788e804c2d0
 ```
 
-### Image Retrieval
 Images can be retrieved for both Russian and Ukrainian versions:
 
 ```http

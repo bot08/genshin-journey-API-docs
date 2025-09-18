@@ -174,7 +174,7 @@ GET https://sushicat.pp.ua/api/image.php?path=api/genshin/storage/uploads/2022/1
 
 ## Additional Documentation
 
-For more detailed information about query parameters, filtering, and advanced usage, refer to the [Cockpit CMS documentation](https://getcockpit.com/documentation) as the API is built on Cockpit CMS v0.12.x.
+For more detailed information about query parameters, filtering, and advanced usage, refer to the [Cockpit CMS documentation](https://github.com/agentejo/cockpit-docs) as the API is built on Cockpit CMS v0.12.x.
 
 ## Important Notes
 

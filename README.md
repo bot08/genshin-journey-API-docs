@@ -7,7 +7,7 @@ API for accessing data from [genshin-journey.space](https://genshin-journey.spac
 The API is available through multiple endpoints to ensure reliability and language support:
 
 **Russian Data:**
-* Primary: `https://gj.sushicat.pp.ua/`
+* Primary: `https://gj.sushicat.pp.ua`
 * Fallback 1: `https://sushicat.pp.ua/api/genshin`
 * Fallback 2: `https://api.genshin-journey.space/.netlify/functions/index`
 

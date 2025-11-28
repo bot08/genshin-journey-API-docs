@@ -15,7 +15,7 @@ The API is available through multiple endpoints to ensure reliability and langua
 * Primary: `https://sushicat.pp.ua/api/genshin-ua`
 * Fallback: `https://api.genshin-journey.space/.netlify/functions/index-ua`
 
-*For simplicity in the examples below, `[BASE_URL]` will generally refer to one of the primary base URLs (e.g., `https://sushicat.pp.ua/api/genshin`). Choose the appropriate one for your needs.*
+*For simplicity in the examples below, `[BASE_URL]` will generally refer to one of the primary base URLs (e.g., `https://gj.sushicat.pp.ua`). Choose the appropriate one for your needs.*
 
 ## Architecture Overview
 

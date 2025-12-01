@@ -7,14 +7,15 @@ API for accessing data from [genshin-journey.space](https://genshin-journey.spac
 The API is available through multiple endpoints to ensure reliability and language support:
 
 **Russian Data:**
-* Primary: `https://sushicat.pp.ua/api/genshin`
-* Fallback: `https://api.genshin-journey.space/.netlify/functions/index`
+* Primary: `https://gj.sushicat.pp.ua`
+* Fallback 1: `https://sushicat.pp.ua/api/genshin`
+* Fallback 2: `https://api.genshin-journey.space/.netlify/functions/index`
 
 **Ukrainian Data:**
 * Primary: `https://sushicat.pp.ua/api/genshin-ua`
 * Fallback: `https://api.genshin-journey.space/.netlify/functions/index-ua`
 
-*For simplicity in the examples below, `[BASE_URL]` will generally refer to one of the primary base URLs (e.g., `https://sushicat.pp.ua/api/genshin`). Choose the appropriate one for your needs.*
+*For simplicity in the examples below, `[BASE_URL]` will generally refer to one of the primary base URLs (e.g., `https://gj.sushicat.pp.ua`). Choose the appropriate one for your needs.*
 
 ## Architecture Overview
 

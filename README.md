@@ -21,25 +21,13 @@ The API is available through multiple endpoints to ensure reliability and langua
 
 The backend architecture consists of multiple components:
 
-1. **Cockpit CMS (v0.12.x)** - Main database containing most of the information
-2. **Additional Scripts** - Custom endpoints for weapons, artifacts, and comments
+1. **Cockpit CMS (v0.12.x)** - Main database: characters, banners, weapons, artifacts and the rest of the content
+2. **Additional Scripts** - Custom endpoints for comments
 3. **Proxy API** - Fallback server at `api.genshin-journey.space` with additional undocumented scripts
 
 ## Authentication
 
-Most endpoints require an **API Token**: `a4191046104f8f3674f788e804c2d0`
-
-The token can be used in two ways:
-
-### URL Parameter
-```
-?token=a4191046104f8f3674f788e804c2d0
-```
-
-### Header
-```
-Cockpit-Token: a4191046104f8f3674f788e804c2d0
-```
+Read requests are public: no token is needed.
 
 ## Data Collections
 
@@ -50,6 +38,8 @@ The API provides access to the following Cockpit CMS collections:
 - **gacha**
 - **gachaWeapons**
 - **chronicle**
+- **weapons**
+- **artefacts**
 
 ## Singletons
 
@@ -59,18 +49,18 @@ The API provides access to the following Cockpit CMS collections:
 
 #### Basic Request (All Fields)
 ```http
-GET [BASE_URL]/api/collections/get/charactersv2?token=a4191046104f8f3674f788e804c2d0
+GET [BASE_URL]/api/collections/get/charactersv2
 ```
 
 #### Advanced Request with Filtering
 **GET Request:**
 ```http
-GET [BASE_URL]/api/collections/get/charactersv2?sort[rarity]=-1&skip=0&limit=36&fields[name]=1&fields[nameeng]=1&fields[rarity]=1&fields[ico]=1&token=a4191046104f8f3674f788e804c2d0
+GET [BASE_URL]/api/collections/get/charactersv2?sort[rarity]=-1&skip=0&limit=36&fields[name]=1&fields[nameeng]=1&fields[rarity]=1&fields[ico]=1
 ```
 
 **POST Request:**
 ```http
-POST [BASE_URL]/api/collections/get/charactersv2?token=a4191046104f8f3674f788e804c2d0
+POST [BASE_URL]/api/collections/get/charactersv2
 Content-Type: application/json
 
 {
@@ -88,37 +78,54 @@ Content-Type: application/json
 }
 ```
 
-### Weapons Script
+### Get *weapons*
 
-Weapons data is obtained through custom scripts as they are not stored in the Cockpit CMS.
+One entry per weapon, everything released up to the current game version. Texts are the official Russian localization.
 
-#### By Type
+#### List by Type, Rarest First, with Pagination
 ```http
-GET [BASE_URL]/additional/weapons/get.php?type=sword_normal
+GET [BASE_URL]/api/collections/get/weapons?filter[type]=Меч&sort[rarity]=-1&sort[_id]=-1&limit=20&skip=0&fields[name]=1&fields[nameeng]=1&fields[rarity]=1&fields[ico]=1
 ```
 
-**Available types**: `{weapon_type}_{sorting}`
-- Weapon types: `sword`, `bow`, `catalyst`, `claymore`, `polearm`
-- Sorting options: `normal`, `reversed`, `sorted`
-
-#### By ID
+#### Search by Name
 ```http
-GET [BASE_URL]/additional/weapons/get.php?id=the_black_sword
-```
-
-### Artifacts Script
-
-The artifacts endpoint works identically to the weapons script but uses a different endpoint.
-
-#### By Type
-```http
-GET [BASE_URL]/additional/artefacts/get.php?type=normal
+GET [BASE_URL]/api/collections/get/weapons?filter[name][$regex]=небесн
 ```
 
 #### By ID
 ```http
-GET [BASE_URL]/additional/artefacts/get.php?id=noblesse_oblige
+GET [BASE_URL]/api/collections/get/weapons?filter[nameeng]=the_black_sword
 ```
+
+### Get *artefacts*
+
+One entry per artifact set.
+
+#### List, Rarest First
+```http
+GET [BASE_URL]/api/collections/get/artefacts?sort[rarity]=-1&sort[_id]=-1&limit=20&skip=0
+```
+
+#### By ID
+```http
+GET [BASE_URL]/api/collections/get/artefacts?filter[nameeng]=noblesse_oblige
+```
+
+### Sorting, Search and Pagination
+
+Both collections were filled in release order, so `_id` follows the release date.
+
+- Newest first: `sort[_id]=-1`
+- Rarest first: `sort[rarity]=-1&sort[_id]=-1`
+- Least rare first: `sort[rarity]=1&sort[_id]=1`
+- Alphabetical: `sort[name]=1`
+- Search: `filter[name][$regex]=<text>` is case-insensitive.
+- Pagination: `limit` and `skip`; the response has `total`.
+- Images: `[BASE_URL]` + `ico.path`.
+
+### Legacy Weapons and Artifacts Scripts (deprecated)
+
+`/additional/weapons/get.php` and `/additional/artefacts/get.php` still respond, but they are no longer updated and will be removed. Use the `weapons` and `artefacts` collections instead.
 
 ### Comments System
 
@@ -155,7 +162,7 @@ For testing purposes, you can use:
 If the main server is unavailable, use the proxy server (not recommended for regular use):
 
 ```http
-GET https://api.genshin-journey.space/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan&token=a4191046104f8f3674f788e804c2d0
+GET https://api.genshin-journey.space/.netlify/functions/index/api/collections/get/charactersv2?filter[nameeng]=faruzan
 ```
 
 Images can be retrieved for both Russian and Ukrainian versions:

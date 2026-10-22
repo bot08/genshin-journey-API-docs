@@ -82,19 +82,6 @@ Content-Type: application/json
 
 One entry per weapon, everything released up to the current game version. Texts are the official Russian localization.
 
-**Fields:**
-- `name` - name, e.g. `Чёрный меч`
-- `nameeng` - URL slug (paimon.moe id), e.g. `the_black_sword`
-- `rarity` - `1`–`5`
-- `type` - `Меч`, `Двуручный меч`, `Копьё`, `Катализатор` or `Лук`
-- `ico` - icon, PNG 256×256: `{"path": "/storage/uploads/..."}`
-- `ver` - game version of release, e.g. `1.0`
-- `atkmin` / `atkmax` - base ATK at level 1 / max level, e.g. `42` / `510`
-- `substat` - secondary stat name, empty for 1★–2★, e.g. `Шанс крит. попадания`
-- `substatmin` / `substatmax` - secondary stat at level 1 / max level, e.g. `6%` / `27,6%`
-- `skillname` / `skill` - passive name / text, refinements as `20%/25%/30%/35%/40%`
-- `desk` - description
-
 #### List by Type, Rarest First, with Pagination
 ```http
 GET [BASE_URL]/api/collections/get/weapons?filter[type]=Меч&sort[rarity]=-1&sort[_id]=-1&limit=20&skip=0&fields[name]=1&fields[nameeng]=1&fields[rarity]=1&fields[ico]=1
@@ -113,17 +100,6 @@ GET [BASE_URL]/api/collections/get/weapons?filter[nameeng]=the_black_sword
 ### Get *artefacts*
 
 One entry per artifact set.
-
-**Fields:**
-- `name` - set name, e.g. `Сердце горна`
-- `nameeng` - URL slug (paimon.moe id for old sets), e.g. `heart_of_the_furnace`
-- `rarity` - max rarity, `1`–`5`
-- `rarities` - rarity range for display, e.g. `4-5`
-- `ico` - icon (flower; circlet for the 1-piece «Шаман» sets): `{"path": "/storage/uploads/..."}`
-- `ver` - game version of release, e.g. `7.0`
-- `bonus1` - 1-piece bonus (only the «Шаман» sets)
-- `bonus2` / `bonus4` - 2-piece / 4-piece bonus
-- `flower`, `plume`, `sands`, `goblet`, `circlet` - piece names
 
 #### List, Rarest First
 ```http

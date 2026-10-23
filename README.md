@@ -45,6 +45,23 @@ The API provides access to the following Cockpit CMS collections:
 
 - **aboutv2**
 
+## Languages
+
+Russian is the default. Add `lang` to any collection or singleton request to get translated texts:
+
+- `lang=uk`: Ukrainian.
+- `lang=ja`: Japanese.
+
+Both cover every collection and singleton.
+
+```http
+GET [BASE_URL]/api/collections/get/weapons?lang=uk&filter[nameeng]=the_black_sword
+```
+
+- A field without a translation falls back to Russian.
+- Without `lang`, entries also carry the raw translations as `<field>_uk` and `<field>_ja`. Pass `lang=ru` to get Russian without them.
+- `filter` and `sort` work on the stored fields, so filter translated values by their suffixed name: `lang=uk&filter[type_uk]=Меч`, `lang=ja&filter[name_ja][$regex]=天空`.
+
 ### Get *charactersv2* (example)
 
 #### Basic Request (All Fields)
@@ -80,7 +97,7 @@ Content-Type: application/json
 
 ### Get *weapons*
 
-One entry per weapon, everything released up to the current game version. Texts are the official Russian localization.
+One entry per weapon, everything released up to the current game version. Texts are the official Russian localization; see [Languages](#languages) for Ukrainian and Japanese.
 
 #### List by Type, Rarest First, with Pagination
 ```http
